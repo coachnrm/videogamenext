@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model EFMigrationsHistory {
+  MigrationId    String @id(map: "PK___EFMigrationsHistory") @db.NVarChar(150)
+  ProductVersion String @db.NVarChar(32)
+
+  @@map("__EFMigrationsHistory")
+}
+
+model VideoGames {
+  Id        Int     @id(map: "PK_VideoGames") @default(autoincrement())
+  Title     String? @db.NVarChar(Max)
+  Platform  String? @db.NVarChar(Max)
+  Developer String? @db.NVarChar(Max)
+  Publisher String? @db.NVarChar(Max)
+}
